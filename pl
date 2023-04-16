@@ -1,4 +1,4 @@
-% Facts 
+% FACTS 
 
 % Otitis 
 sintoma(otitis,dolor_de_oido).
@@ -21,9 +21,11 @@ sintoma(osteoporosis,fracturas_vertebreales)
 sintoma(osteoporosis,microfracturas)
 sintoma(osteoporosis,dolor)
 sintoma(osteoporosis,aplastamietnos_vertebrales)
-tratamiento()
-tratamiento
-tratamiento
-tratamiento
+tratamiento(osteoporosis,dieta(calcio, baja_proteinas)).
+tratamiento(osteoporosis,abstencion(tabaco)).
+tratamiento(osteoporosis,abstencion(alcohol)).
+tratamiento(osteoporosis,ejercicio_fisico).
+
+% RULES 
 
 
