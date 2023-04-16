@@ -36,3 +36,13 @@ enfermedad(Enfermedad, Paciente) :-
     tratamiento(Enfermedad, antibiotico),
     padece_sintomas(Paciente, [dolor_de_oido, fiebre, otorrea, vertigo]).
 
+% Gripe
+enfermedad(Enfermedad,Paciente) :-
+    sintoma(Enfermedad,dolor_de_cabeza),
+    sintoma(Enfermedad,fiebre),
+    sintoma(Enfermedad,malestar_general),
+    sintoma(Enfermedad,dolores_musculares),
+    sintoma(Enfermedad,dolores_articulares),
+    tratamiento(Enfermedad,reposo_hidratacion),
+    tratamiento(Enfermedad,medicacion(paracetamol)),
+    padece_sintomas(Paciente,[dolor_de_cabeza, fiebre, malestar_general, dolores_musculares, dolores_articulares]).
