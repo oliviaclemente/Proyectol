@@ -27,5 +27,12 @@ tratamiento(osteoporosis,abstencion(alcohol)).
 tratamiento(osteoporosis,ejercicio_fisico).
 
 % RULES 
-
+% Otitis 
+enfermedad(Enfermedad, Paciente) :-
+    sintoma(Enfermedad, dolor_de_oido),
+    sintoma(Enfermedad, fiebre),
+    sintoma(Enfermedad, otorrea),
+    sintoma(Enfermedad, vertigo),
+    tratamiento(Enfermedad, antibiotico),
+    padece_sintomas(Paciente, [dolor_de_oido, fiebre, otorrea, vertigo]).
 
