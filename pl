@@ -46,4 +46,15 @@ enfermedad(Enfermedad, Paciente) :-
     tratamiento(Enfermedad,reposo_hidratacion),
     tratamiento(Enfermedad,medicacion(paracetamol)),
     padece_sintomas(Paciente,[dolor_de_cabeza, fiebre, malestar_general, dolores_musculares, dolores_articulares]).
+% Osteoporosis
 
+enfermedad(Enfermedad,Paciente) :-
+    sintoma(Enfermedad,fracturas_vertebrales),
+    sintoma(Enfermedad,microfracturas),
+    sintoma(Enfermedad,dolor),
+    sintoma(Enfermedad,aplastamientos_vertebrales),
+    tratamiento(Enfermedad,dieta(calcio, baja_proteinas)),
+    tratamiento(Enfermedad,abstencion(tabaco)),
+    tratamiento(Enfermedad,abstencion(alcohol)),
+    tratamiento(Enfermedad,ejercicio_fisico),
+    padece_sintomas(Paciente,[fracturas_vertebrales, microfracturas, dolor, aplastamientos_vertebrales])
