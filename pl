@@ -17,7 +17,13 @@ tratamiento(gripe,reposo_e_hidratacion).
 tratamiento(gripe,medicacion(paracetamol)).
 
 %  Osteoporosis 
-sintoma(osteoporis,)
-
+sintoma(osteoporosis,fracturas_vertebreales)
+sintoma(osteoporosis,microfracturas)
+sintoma(osteoporosis,dolor)
+sintoma(osteoporosis,aplastamietnos_vertebrales)
+tratamiento()
+tratamiento
+tratamiento
+tratamiento
 
 
