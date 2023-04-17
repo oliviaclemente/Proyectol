@@ -1,8 +1,9 @@
 % //FACTS// 
 
 % Otitis 
-sintoma(otitis, [dolor_de_oido,fiebre,otorrea,vertigo]).
-tratamiento(otitis, antibiotico).
+sintoma(otitis,[dolor_de_oido,fiebre,otorrea,vertigo]).
+tratamiento(otitis,antibiotico).
+departamento(Otitis,Otorrinolaringologo(unidades_especializadas(Otitis,[Otologia(Audicion),Rinologia(nariz),Faringologia(garganta),Laringologia(voz),])))
 
 % Gripe 
 sintoma(gripe,[dolor_de_cabeza,fiebre,malestar_general,dolores_articulares,dolores_musculares]).
@@ -19,9 +20,9 @@ tratamiento(osteoporosis,[dieta(calcio, baja_proteinas),abstencion(tabaco),abste
 
 % Neumonia 
 
-sintoma(neumonia, [tos_con_expectoracion_purulenta, dolor_torácico, fiebre_con_escalofríos ]),
+sintoma(neumonia, [tos_con_expectoracion_purulenta, dolor_torácico, fiebre_con_escalofríos]),
 
-tratamiento (neumonia,[broncoscopia,serologia, tratamiento_intrevenoso_con_antibioticos ] ).
+tratamiento (neumonia,[broncoscopia,serologia, tratamiento_intrevenoso_con_antibioticos]).
 
 % //RULES// 
 
@@ -65,17 +66,21 @@ enfermedad(Enfermedad,Paciente) :-
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 % Regla para determinar si el paciente padece los síntomas de alguna enfermedad
+
 padece_sintomas(Paciente, Sintomas) :-
     forall(member(Sintoma, Sintomas), padece_sintoma(Paciente, Sintoma)).
 
 
 % Regla para determinar si el paciente padece un síntoma en particular
+
 padece_sintoma(Paciente, Sintoma) :-
     sintoma(Enfermedad, Sintoma),
     padece_enfermedad(Paciente, Enfermedad).
 
 
 % Regla para determinar si el paciente padece una enfermedad en particular
+
 padece_enfermedad(Paciente, Enfermedad) :-
     enfermedad(Enfermedad, Paciente).
+
 
