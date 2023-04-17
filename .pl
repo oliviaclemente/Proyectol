@@ -1,16 +1,18 @@
+%Ejemplo 'Knowledge Base' con 5 enfermedades 
 % //FACTS// 
 
 % Otitis 
 sintoma(otitis,[dolor_de_oido,fiebre,otorrea,vertigo]).
 tratamiento(otitis,antibiotico).
-departamento(Otitis,Otorrinolaringologo(unidades_especializadas(Otitis,[Otologia(Audicion),Rinologia(nariz),Faringologia(garganta),Laringologia(voz),])))
+departamento(Otitis,Otorrinolaringologo(unidades_especializadas([Otologia(audicion),Rinologia(nariz),Faringologia(garganta),Laringologia(voz),])))
 
 % Gripe 
 sintoma(gripe,[dolor_de_cabeza,fiebre,malestar_general,dolores_articulares,dolores_musculares]).
 
 tratamiento(gripe,reposo_e_hidratacion).
-
 tratamiento(gripe,medicacion(paracetamol)).
+       
+departamento(Gripe,Medicina_Interna(unidades_especializadas(None)))
 
 %  Osteoporosis 
 
@@ -18,22 +20,27 @@ sintoma(osteoporosis,[fracturas_vertebrales,microfracturas,dolor,aplastamientos_
 
 tratamiento(osteoporosis,[dieta(calcio, baja_proteinas),abstencion(tabaco),abstencion(alcohol),ejercicio_fisico]).
 
+departamento(Osteoporosis,Endocrinologia_y_Nutricion(unidades_asistenciales[Unidad_de_]))
+
 % Neumonia 
 
 sintoma(neumonia, [tos_con_expectoracion_purulenta, dolor_torácico, fiebre_con_escalofríos]),
 
 tratamiento (neumonia,[broncoscopia,serologia, tratamiento_intrevenoso_con_antibioticos]).
 
+departamento(Neumonia,Neumologia(unidades_especializadas([Neumologia_Pediátrica,Neumologia_Intensiva,Neumologia_Respiratoria]))
 % //RULES// 
-
 %  Otitis
-enfermedad(Enfermedad,Paciente) :-
+enfermedad(Otitis) :-
     sintoma(Enfermedad,[dolor_de_oido,fiebre,otorrea,vertigo]),
-    tratamiento(Enfermedad,antibiotico),
-    padece_sintomas(Paciente,[dolor_de_oido, fiebre, otorrea, vertigo]).
+
+    tratamiento(Enfermedad,[antibiotico]),
+
+    padece_sintomas(Paciente,[dolor_de_oido,fiebre,otorrea,vertigo]).
+
 
 %  Gripe
-enfermedad(Enfermedad, Paciente) :-
+enfermedad(Gripe) :-
     sintoma(Enfermedad,[dolor_de_cabeza,fiebre,malestar_general,dolores_articulares,dolores_musculares]),
 
     tratamiento(Enfermedad,[reposo_hidratacion,medicacion(paracetamol)]),
@@ -50,31 +57,27 @@ enfermedad(Enfermedad,Paciente) :-
 
 % Neumonia
 
-enfermedad(Enfermedad,Paciente) :-
+enfermedad(neumania,) :-
     sintoma(Enfermedad,[tos_con_expectoracion_purulenta, dolor_torácico, fiebre_con_escalofríos ]),
 
     tratamiento (Enfermedad,[broncoscopia,serologia, tratamiento_intrevenoso_con_antibioticos ] ),
 
     padece_sintomas(Paciente,[tos_con_expectoracion_purulenta, dolor_torácico, fiebre_con_escalofríos ]).
 
-
-
-
-
-
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+%Draft
 
 % Regla para determinar si el paciente padece los síntomas de alguna enfermedad
 
 padece_sintomas(Paciente, Sintomas) :-
-    forall(member(Sintoma, Sintomas), padece_sintoma(Paciente, Sintoma)).
+    forall(member(sintoma, Sintomas), padece_sintoma(Paciente,sintoma)).
 
 
 % Regla para determinar si el paciente padece un síntoma en particular
 
-padece_sintoma(Paciente, Sintoma) :-
-    sintoma(Enfermedad, Sintoma),
+padece_sintoma(Paciente, sintoma) :-
+    sintoma(Enfermedad, sintoma),
     padece_enfermedad(Paciente, Enfermedad).
 
 
