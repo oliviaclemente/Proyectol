@@ -1,20 +1,29 @@
-%Ejemplo 'Knowledge Base' con 5 enfermedades 
+%Ejemplo 'Knowledge Base' con 4 enfermedades 
 % //FACTS// 
 
 % Otitis 
+enfermedad(otitis).
+
 sintoma(otitis,[dolor_de_oido,fiebre,otorrea,vertigo]).
+
 tratamiento(otitis,antibiotico).
+
 departamento(Otitis,Otorrinolaringologo(unidades_especializadas([Otologia(audicion),Rinologia(nariz),Faringologia(garganta),Laringologia(voz),])))
 
 % Gripe 
+
+enfermedad(gripe).
+
 sintoma(gripe,[dolor_de_cabeza,fiebre,malestar_general,dolores_articulares,dolores_musculares]).
 
 tratamiento(gripe,reposo_e_hidratacion).
+
 tratamiento(gripe,medicacion(paracetamol)).
-       
+
 departamento(Gripe,Medicina_Interna(unidades_especializadas(None)))
 
 %  Osteoporosis 
+Osteoporosis:-
 
 sintoma(osteoporosis,[fracturas_vertebrales,microfracturas,dolor,aplastamientos_vertebrales]),
 
@@ -28,17 +37,17 @@ sintoma(neumonia, [tos_con_expectoracion_purulenta, dolor_torácico, fiebre_con_
 
 tratamiento (neumonia,[broncoscopia,serologia, tratamiento_intrevenoso_con_antibioticos]).
 
-departamento(Neumonia,Neumologia(unidades_especializadas([Neumologia_Pediátrica,Neumologia_Intensiva,Neumologia_Respiratoria]))
+departamento(Neumonia,(unidades_especializadas([Neumologia_Pediátrica,Neumologia_Intensiva,Neumologia_Respiratoria])))
+
 % //RULES// 
 %  Otitis
-enfermedad(Otitis) :-
+enfermedad(otitis) :-
+    
     sintoma(Enfermedad,[dolor_de_oido,fiebre,otorrea,vertigo]),
-
-    tratamiento(Enfermedad,[antibiotico]),
-
+    
+    tratamiento(otitis,antibiotico).
+    
     padece_sintomas(Paciente,[dolor_de_oido,fiebre,otorrea,vertigo]).
-
-
 %  Gripe
 enfermedad(Gripe) :-
     sintoma(Enfermedad,[dolor_de_cabeza,fiebre,malestar_general,dolores_articulares,dolores_musculares]),
@@ -47,8 +56,7 @@ enfermedad(Gripe) :-
 
     padece_sintomas(Paciente,[dolor_de_cabeza, fiebre, malestar_general, dolores_musculares, dolores_articulares]).
 % Osteoporosis
-
-enfermedad(Enfermedad,Paciente) :-
+enfermedad(Osteporosis) :-
     sintoma(Enfermedad,[fracturas_vertebrales,microfracturas,dolor,aplastamientos_vertebrales]),
 
     tratamiento(Enfermedad,[dieta(calcio, baja_proteinas),abstencion(tabaco),abstencion(alcohol),ejercicio_fisico]),
@@ -57,10 +65,10 @@ enfermedad(Enfermedad,Paciente) :-
 
 % Neumonia
 
-enfermedad(neumania,) :-
+enfermedad(neumonia) :-
     sintoma(Enfermedad,[tos_con_expectoracion_purulenta, dolor_torácico, fiebre_con_escalofríos ]),
 
-    tratamiento (Enfermedad,[broncoscopia,serologia, tratamiento_intrevenoso_con_antibioticos ] ),
+    tratamiento(Enfermedad,[broncoscopia,serologia, tratamiento_intrevenoso_con_antibioticos ] ),
 
     padece_sintomas(Paciente,[tos_con_expectoracion_purulenta, dolor_torácico, fiebre_con_escalofríos ]).
 
@@ -85,5 +93,7 @@ padece_sintoma(Paciente, sintoma) :-
 
 padece_enfermedad(Paciente, Enfermedad) :-
     enfermedad(Enfermedad, Paciente).
+
+
 
 
