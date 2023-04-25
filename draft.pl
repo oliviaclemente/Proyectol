@@ -99,10 +99,9 @@ assert(no(Question)),fail.
         asks(S).
 
 /* undo all yes/no assertions*/
-undo:- retract(res(_)),fail.
-undo:-retract(no(_)),fail. 
+undo:- retract(yes(_),fail).
+undo:-retract(no(_),fail).
 undo.
-
 
 
 
