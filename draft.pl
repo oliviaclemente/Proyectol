@@ -77,6 +77,8 @@ nl,
 write('Serología'),
 nl,
 write('Tratamiento intravenoso con antibióticos')
+nl,
+write('Se recomienda acudir al Neumólogo')
 nl.
 
 
