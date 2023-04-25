@@ -1,6 +1,6 @@
 go :-
 hypothesis(enfermedad),
-write('Es probable que el paciente adolezca de '),
+write('Es probable que el paciente adolezca de: '),
 nl,
 write(enfermedad),
 nl, 
@@ -20,7 +20,7 @@ verify(fiebre),
 verify(otorrea),
 verify(vertigo),
 
-write('Tratamiento:'),
+write('Tratamiento/Medicación :'),
 nl,
 write('1:Antibiotico'),
 nl,
@@ -34,6 +34,30 @@ verify(fiebre),
 varify(malestar_general),
 verify(dolores_articulares),
 verify(dolores_musculares),
+nl. 
+
+write('Tratamiento/Medicación:'),
+nl,
+write('Reposo e hidratación')
+nl,
+write('Medicación: Paracetamol'),
+
+nl.
 
 
-q
+/* Regla para determinar si el paciente padece osteoporosis */
+osteoporosis :-
+verify(microfracturas),
+verify(aplastamientos_vertebrales),
+verify(dolor),
+verify(fracturas_vertebrales),
+nl.
+
+write('Tratamiento/Medicación:'),
+nl,
+write('Dieta:calcio y bajas en proteínas'),
+nl,
+write('Abstención de tabaco y alcohol'),   
+nl,
+write('Ejercicio físico'),
+nl. 
