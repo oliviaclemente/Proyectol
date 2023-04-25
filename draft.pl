@@ -78,3 +78,31 @@ write('Serología'),
 nl,
 write('Tratamiento intravenoso con antibióticos')
 nl.
+
+
+      ask(Question):-
+        write('Tiene el presente paciente los siguientes sintomas: '),
+        write(Question),
+        write('? ')
+        read(Response),
+        nl,
+        (Response == yes ; Response == y)
+->
+assert (yes(Questions)):
+assert(no(Question)),fail.
+:- dynamic yes/1 no/1.
+     /*How to verify something */
+     verify(S):-
+        (yes(S))
+        ->
+        fail, 
+        asks(S).
+
+/* undo all yes/no assertions*/
+undo:- retract(res(_)),fail.
+undo:-retract(no(_)),fail. 
+undo.
+
+
+
+
