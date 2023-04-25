@@ -66,7 +66,7 @@ enfermedad(Osteporosis) :-
 % Neumonia
 
 enfermedad(neumonia) :-
-    sintoma(Enfermedad,[tos_con_expectoracion_purulenta, dolor_torácico, fiebre_con_escalofríos ]),
+    sintoma(Enfermedad,[tos_con_expectoracion_purulenta, dolor_torácico, fiebre_con_escalofríos]),
 
     tratamiento(Enfermedad,[broncoscopia,serologia, tratamiento_intrevenoso_con_antibioticos ] ),
 

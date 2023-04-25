@@ -60,4 +60,21 @@ nl,
 write('Abstención de tabaco y alcohol'),   
 nl,
 write('Ejercicio físico'),
-nl. 
+nl,
+write('Se recomienda acudir al Osteólogo')
+nl.
+
+/* Regla para determinar si el paciente padece neumonia */
+neumonia :-
+verify (tos_con_expectoracion_purulenta),
+verify(dolor_torácico),
+verify(fiebre_con_escalofríos)
+nl.
+write('Tratamiento/Medicación:'),
+nl,
+write('Broncoscopia'),
+nl,
+write('Serología'),
+nl,
+write('Tratamiento intravenoso con antibióticos')
+nl.
