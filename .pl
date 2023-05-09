@@ -41,13 +41,7 @@ departamento(Neumonia,(unidades_especializadas([Neumologia_Pediátrica,Neumologi
 
 % //RULES// 
 %  Otitis
-enfermedad(otitis) :-
-    
-    sintoma(Enfermedad,[dolor_de_oido,fiebre,otorrea,vertigo]),
-    
-    tratamiento(otitis,antibiotico).
-    
-    padece_sintomas(Paciente,[dolor_de_oido,fiebre,otorrea,vertigo]).
+
 %  Gripe
 enfermedad(Gripe) :-
     sintoma(Enfermedad,[dolor_de_cabeza,fiebre,malestar_general,dolores_articulares,dolores_musculares]),
